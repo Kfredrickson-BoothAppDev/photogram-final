@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PhotogramFinal</title>
+    <title>Photogram Final</title>
     <%= csrf_meta_tags %>
 
     <!-- Expand the number of characters we can use in the document beyond basic ASCII 🎉 -->
@@ -15,6 +15,38 @@
   </head>
 
   <body>
+   <nav>
+      <ul>
+          <li>
+            <a href="/user_sign_out">Sign out</a>
+          </li>
+          <li>
+            <a href="/user_sign_in">Sign in</a>
+          </li>
+          <li>
+            <a href="/user_sign_up">Sign up</a>
+        <li>
+          <a href="/users">All users</a>
+        </li>
+        <li>
+          <a href="/photos">All public photos</a>
+        </li>
+        <li>
+        <%= session.fetch(:user_id) %>
+        </li>
+      </ul>
+    </nav>
+    <h1>Signed in successfully</h1>
+   <% if notice.present? %>
+    <div style="border: thin green solid; color: green">
+<%= notice %>
+</div>
+<% end %>
+<% if alert.present? %>
+<div style="border: thin red solid; color: red">
+<%= alert %>
+</div>
+<% end %>
     <%= yield %>
   </body>
 </html>
